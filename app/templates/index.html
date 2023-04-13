@@ -90,9 +90,10 @@
             </form>
             
         </div>
-        <div data-bs-spy="scroll" class="col-sm-4 patient-his border-start-0 border  border-dark rounded">
+        <div data-bs-spy="scroll" class="col-sm-4 patient-his border-start-0 border border-dark rounded overflow-auto custom-scroll-container">
             <h3>ประวัติการมารับการรักษา</h3>
             {% include 'history_of_illness.html' %}
+            
         </div>
     </div>
     {% include 'addPatient.html' %}

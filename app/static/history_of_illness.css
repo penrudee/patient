@@ -35,7 +35,7 @@ div.avatar-img{
     top: 130px;
 }
 .history_ill {
-    margin-top: 12px;
+    margin-top: 22px;
 	color: var(--c-grey-500);
 	border: 1px solid var(--c-grey-200);
 	box-shadow: 0 4px 4px 0 var(--c-grey-100);
@@ -43,8 +43,8 @@ div.avatar-img{
 	padding: 16px;
 	font-size: 1rem;
     position: absolute;
-    right:8rem;
-    width:370px ;
+    right:15rem;
+    width:300px ;
 }
 
 

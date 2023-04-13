@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block link %}
+<link rel="stylesheet" href="{{url_for('static',filename='login.css')}}">
+{% endblock link %}
+
+{% block content %}
+
+<div class="container">
+    <div class="login-form">
+        <form action="" method="post">
+            {{form.hidden_tag()}}
+            <p>{{form.username.label(class='form-control-label')}}</p>
+            <p>{{form.username(class='form-control')}}</p>
+            
+            {% for error in form.username.errors %}
+            <span style="color:red;">[{{ error }}]</span>
+            {% endfor %}
+            
+            <p>{{form.password.label(class='form-control-label')}}</p>
+            <p>{{form.password(class='form-control')}}</p>
+            
+            {% for error in form.password.errors %}
+            <span style="color:red;">[{{ error }}]</span>
+            {% endfor %}
+            
+            <div class="remember_me">
+                <div class="choice">
+                    <p>{{form.remember_me()}}</p>
+                </div>
+                <div class="label-remember_me">
+                    <p>{{ form.remember_me.label }}</p>
+                </div>
+                 
+            </div>
+            <p>{{form.submit(class='btn btn-primary btn-sm')}}</p>
+        </form>
+    </div>
+</div>
+{% endblock %}

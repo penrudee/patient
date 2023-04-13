@@ -1,100 +1,480 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 
-*{
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family:'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
-.container{
+html{
+    height: 100%;
+}
+/* body{
+    display: flex;
+  flex-direction: column;
+  min-height: 100%;
+} */
+.base-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
     margin-bottom: 20px;
+    /* flex: 1 0 auto; */
 }
-.person{
+
+.person {
     display: flex;
 }
-.person .add_patient{
+
+.person .add_patient {
     position: relative;
-    right: 43.5rem;
-    top:5px;
-    
+    right: 38rem;
+    top: 5px;
+
 }
-img.rounded{
+
+img.rounded {
     width: 100px;
 }
-.patient-form .col{
+.patient-form{
+    flex: 1 0 auto;
+}
+.patient-form .col {
     padding-top: 5px;
 }
-input, form, textarea{
+
+input,
+form,
+textarea {
     display: block;
     width: 100%;
 }
-textarea{
-    margin:10px 10px;
+
+textarea {
+    margin: 10px 10px;
 
 }
-textarea::placeholder{
-    
+
+textarea::placeholder {
+
     font-size: 18px;
-    padding: 10px  0 10px;
+    padding: 10px 0 10px;
 }
-form.col.btn{
-    margin-bottom:10px;
+
+form.col.btn {
+    margin-bottom: 10px;
 }
-.add-btn .form-group{
+
+.add-btn .form-group {
     display: flex;
 }
-.form-group .btn-add-btn{
+
+.form-group .btn-add-btn {
     position: absolute;
-    left: 20vh;
+    left: 28vh;
+    margin: 0 0 0 2px;
 }
-.form-group .label-col{
+
+.form-group .label-col {
     position: relative;
-    left: 6vh;
-    
+    left: 7vh;
+
 }
+
 div.row {
     display: flex;
 }
-div.row .col-btn{
+
+div.row .col-btn {
     position: absolute;
 }
-div.row .col-input{
-    position:relative;
+
+div.row .col-input {
+    position: relative;
     left: 8vh;
     width: 93.8%;
 }
-div.add-btn{
-    margin:10px;
+
+div.add-btn {
+    margin: 10px;
 }
-@media only screen and (max-width: 600px) {
-    .patient-form .col{
+.footer-dark{
+    flex-shrink: 0;
+}
+@media only screen and (max-width: 1500px) {
+    .container{
+        margin-bottom:10rem;
+    }
+    .person .add_patient {
+        position: relative;
+        right: 38rem;
+        top: 5px;
+    
+    }
+    .patient-form .col {
         padding-top: 5px;
     }
-    .form-group .btn-add-btn{
+    .form-group .btn-add-btn {
         position: absolute;
-        left: 4vh;
+        left: 55vh;
+        margin: 0 0 0 1px;
     }
-    div.row .col-btn{
+    
+
+    div.row .col-btn {
         position: absolute;
     }
-    div.row .col-input{
-        position:relative;
+
+    div.row .col-input {
+        position: relative;
+        left: 15vh;
+        width: 85%;
+    }
+
+    
+    .patient-his {
+        
+        position: relative;
+        height: 600px;
+        width: 100%;
+        /* width: 377px;
+        overflow: auto;
+        border:1px solid var(--cgrey-400) */
+        overflow-y: scroll
+    }
+
+    .item-description {
+         position: relative;
+         width: 70%; 
+         
+         /* bottom: 500px;
+        left: 15rem;  */
+    }
+    .item-description > div{
+        display: inline-block;
+    }
+    .pharmacist-user{
+        display: flex;
+        position: absolute;
+        left:5px;
+        bottom:4rem;
+    }
+    .pharmacist-user span{
+        font-size: 0.75rem;
+        margin-top: 2rem;
+        position: relative;
+        left: 3rem;
+        top: 7.5rem;
+    }
+    .history_ill{
+        position: absolute;
+        left:0.5rem;
+        top:4rem;
+        width: 45%;
+    }
+    .footer-dark {
+        /* position: relative; */
+        flex-shrink: 0;
+    }
+}
+@media only screen and (max-width: 1400px) {
+    .container{
+        margin-bottom:10rem;
+    }
+    .person .add_patient {
+        position: relative;
+        right: 38rem;
+        top: 5px;
+    
+    }
+    .patient-form .col {
+        padding-top: 5px;
+    }
+    .form-group .btn-add-btn {
+        position: absolute;
+        left: 40vh;
+        margin: 0 0 0 1px;
+    }
+    
+
+    div.row .col-btn {
+        position: absolute;
+    }
+
+    div.row .col-input {
+        position: relative;
+        left: 15vh;
+        width: 85%;
+    }
+
+    
+    .patient-his {
+        
+        position: relative;
+        height: 600px;
+        width: 100%;
+        /* width: 377px;
+        overflow: auto;
+        border:1px solid var(--cgrey-400) */
+        overflow-y: scroll
+    }
+
+    .item-description {
+         position: relative;
+         width: 70%; 
+         
+         /* bottom: 500px;
+        left: 15rem;  */
+    }
+    .item-description > div{
+        display: inline-block;
+    }
+    .pharmacist-user{
+        display: flex;
+        position: absolute;
+        left:5px;
+        bottom:4rem;
+    }
+    .pharmacist-user span{
+        font-size: 0.75rem;
+        margin-top: 2rem;
+        position: relative;
+        left: 3rem;
+        top: 7.5rem;
+    }
+    .history_ill{
+        position: absolute;
+        left:0.5rem;
+        top:4rem;
+        width: 45%;
+    }
+    .footer-dark {
+        /* position: relative; */
+        flex-shrink: 0;
+    }
+}
+@media only screen and (max-width: 1300px) {
+    .container{
+        margin-bottom:10rem;
+    }
+    .person .add_patient {
+        position: absolute;
+        left: 10rem;
+        top: 6.5rem;
+        margin-top:5px;
+    
+    }
+    .patient-form .col {
+        padding-top: 5px;
+    }
+    .form-group .btn-add-btn {
+        position: absolute;
+        left: 20vh;
+        margin: 0 0 0 1px;
+    }
+    
+
+    div.row .col-btn {
+        position: absolute;
+        left:17vh;
+    }
+
+    div.row .col-input {
+        position: relative;
+        left: 18vh;
+        width: 85%;
+    }
+
+    
+    .patient-his {
+        
+        position: relative;
+        height: 600px;
+        width: 100%;
+        /* width: 377px;
+        overflow: auto;
+        border:1px solid var(--cgrey-400) */
+        overflow-y: scroll
+    }
+
+    .item-description {
+         position: relative;
+         width: 70%; 
+         
+         /* bottom: 500px;
+        left: 15rem;  */
+    }
+    .item-description > div{
+        display: inline-block;
+    }
+    .pharmacist-user{
+        display: flex;
+        position: absolute;
+        left:5px;
+        bottom:4rem;
+    }
+    .pharmacist-user span{
+        font-size: 0.75rem;
+        margin-top: 2rem;
+        position: relative;
+        left: 3rem;
+        top: 7.5rem;
+    }
+    .history_ill{
+        position: absolute;
+        left:0.5rem;
+        top:4rem;
+        width: 45%;
+    }
+    .footer-dark {
+        /* position: relative; */
+        flex-shrink: 0;
+    }
+}
+@media only screen and (max-width: 1100px) {
+    .container{
+        margin-bottom:10rem;
+    }
+    .person .add_patient {
+        position: relative;
+        right: 30rem;
+        top: 5px;
+    
+    }
+    .patient-form .col {
+        padding-top: 5px;
+    }
+    .form-group .btn-add-btn {
+        position: absolute;
+        left: 17vh;
+        margin: 0 0 0 1px;
+    }
+    
+
+    div.row .col-btn {
+        position: absolute;
+    }
+
+    div.row .col-input {
+        position: relative;
         left: 8vh;
         width: 85%;
     }
-    div.patient-his{
-        max-height: 700px;
-    }
-    .patient-his .item-description{
+
+    
+    .patient-his {
         
         position: relative;
+        height: 600px;
+        width: 100%;
+        /* width: 377px;
+        overflow: auto;
+        border:1px solid var(--cgrey-400) */
+        overflow-y: scroll
     }
-    .item-description{
+
+    .item-description {
+         position: relative;
+         width: 70%; 
+         
+         /* bottom: 500px;
+        left: 15rem;  */
+    }
+    .item-description > div{
+        display: inline-block;
+    }
+    .pharmacist-user{
+        display: flex;
         position: absolute;
-        bottom: 100px;
-        left: 10rem;
+        left:5px;
+        bottom:4rem;
     }
-    .footer-dark{
+    .pharmacist-user span{
+        font-size: 0.75rem;
+        margin-top: 2rem;
         position: relative;
+        left: 3rem;
+        top: 7.5rem;
+    }
+    .history_ill{
+        position: absolute;
+        left:0.5rem;
+        top:4rem;
+        width: 45%;
+    }
+    .footer-dark {
+        /* position: relative; */
+        flex-shrink: 0;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .container{
+        margin-bottom:10rem;
+    }
+    
+    .patient-form .col {
+        padding-top: 5px;
+    }
+
+    .form-group .btn-add-btn {
+        position: absolute;
+        left: 4vh;
+    }
+
+    div.row .col-btn {
+        position: absolute;
+    }
+
+    div.row .col-input {
+        position: relative;
+        left: 8vh;
+        width: 85%;
+    }
+
+    
+    .patient-his {
+        
+        position: relative;
+        height: 600px;
+        width: 100%;
+        /* width: 377px;
+        overflow: auto;
+        border:1px solid var(--cgrey-400) */
+        overflow-y: scroll
+    }
+
+    .item-description {
+         position: relative;
+         width: 70%; 
+         
+         /* bottom: 500px;
+        left: 15rem;  */
+    }
+    .item-description > div{
+        display: inline-block;
+    }
+    .pharmacist-user{
+        display: flex;
+        position: absolute;
+        left:5px;
+        bottom:4rem;
+    }
+    .pharmacist-user span{
+        font-size: 0.75rem;
+        margin-top: 2rem;
+        position: relative;
+        left: 3rem;
+        top: 7.5rem;
+    }
+    .history_ill{
+        position: absolute;
+        left:0.5rem;
+        top:4rem;
+        width: 45%;
+    }
+    .footer-dark {
+        /* position: relative; */
+        flex-shrink: 0;
     }
 }
