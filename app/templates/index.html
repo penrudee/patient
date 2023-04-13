@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block link %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='index.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='history_of_illness.css')}}">
+{% endblock link%}
+{% block content %}
+<div class="container">
+    <div class="row main">
+        <div class="col-sm-8 patient-form border border-dark rounded">
+            <h2>กรอกขู้อมูลผู้ป่วย</h2>
+            <form action="" method="">
+                <div class="person">
+                    <div class="col">
+                        <img src="{{url_for('static',filename='avatar/who.png')}}" alt="..." class="rounded">
+                    </div>
+                    <div class="add_patient">
+                        <a class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addPatient">
+                            <i class="bi bi-person-add"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <label for="telephone">หมายเลขโทรศัพท์</label>
+                    <input type="text" name="telephone">
+                </div>
+                <div class="col">
+                    <label for="first_name">ชื่อจริง</label>
+                    <input type="text" name="first_name">
+                </div>
+                <div class="col">
+                    <label for="last_name">นามสกุล</label>
+                    <input type="text" name="last_name">
+                </div>
+                <div class="col">
+                    <div class="add-btn">
+                        <div class="form-group">
+                            <div class="col btn-add-btn">
+                                <button id="addInput" type="button" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-plus-circle"></i>
+                                </button>
+                            </div>
+                            <div class="col label-col">
+                                <label for="allergy">ประวัติการแพ้</label>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="newrow allergy" style="margin-bottom:5px;">
+                        <div class="input-allergy">
+                            <div class="row">
+                                <div class="col-btn">
+                                    <button id="removeInput" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-x-circle"></i>
+                                    </button>
+                                </div>
+                                <div class="col-input">
+                                    <input type="text" name="allergy">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div id="newRow" class="newrow allergy"></div>
+                </div>
+                <div class="col">
+                    <label for="chief_complain">สาเหตุที่ทำให้มาร้านยา</label>
+                    <textarea name="chief_complain" id="chief_complain" rows="10"
+                        placeholder="อาการที่เป็นสาเหตุที่นำผู้รับบริการมาร้านยา"></textarea>
+                </div>
+                <div class="col">
+                    <label for="history_of_present_illness">ประวัติเจ็บป่วยในปัจจุบัน</label>
+                    <textarea name="history_of_present_illness" id="history_of_present_illness" rows="10"
+                        placeholder="การซักถามถึงอาการ หรือเหตุการณ์การเจ็บป่วยตั้งแต่เริ่มต้นของการเจ็บป่วยจนถึงปัจจุบันตามลำดับเวลาที่เกิดขึ้น"></textarea>
+                </div>
+                <div class="col">
+                    <label for="medicine">ยาที่จะจ่าย</label>
+                    <textarea name="medicine" id="medicine" rows="10"
+                        placeholder="เช่น Ibuprofen 1x3pc 10's"></textarea>
+                </div>
+                <div class="col" style="margin-bottom:5px;">
+                    <button type="submit" class="btn btn-primary">ตกลง</button>
+                </div>
+
+
+            </form>
+            
+        </div>
+        <div data-bs-spy="scroll" class="col-sm-4 patient-his border-start-0 border  border-dark rounded">
+            <h3>ประวัติการมารับการรักษา</h3>
+            {% include 'history_of_illness.html' %}
+        </div>
+    </div>
+    {% include 'addPatient.html' %}
+    <script src="{{url_for('static',filename='js/index.js')}}"></script>
+</div>
+{% endblock content %}

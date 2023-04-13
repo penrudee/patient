@@ -1,0 +1,75 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+:root {
+    --c-grey-100: #f4f6f8;
+    --c-grey-200: #e3e3e3;
+    --c-grey-300: #b2b2b2;
+    --c-grey-400: #7b7b7b;
+    --c-grey-500: #3d3d3d;
+
+    --c-blue-500: #688afd;
+}
+.pharmacist-user{
+    display: flex;
+    padding-top: 3px;
+    gap: 8px;
+    color: var(--c-grey-400);
+}
+.pharmacist-user span{
+    font-size: 0.75rem;
+    margin-top: 2rem;
+    position: relative;
+    left:3rem;
+    
+}
+.pharmacist-user, img{
+    flex-shrink: 0;
+    
+}
+div.avatar-img{
+    position: absolute;
+    top: 130px;
+}
+.history_ill {
+    margin-top: 12px;
+	color: var(--c-grey-500);
+	border: 1px solid var(--c-grey-200);
+	box-shadow: 0 4px 4px 0 var(--c-grey-100);
+	border-radius: 6px;
+	padding: 16px;
+	font-size: 1rem;
+    position: absolute;
+    right:8rem;
+    width:370px ;
+}
+
+
+
+.avatar img {
+    flex-shrink: 0;
+    width: 40px;
+    object-fit: cover;
+}
+
+ .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+}
+
+.history_ill .avatar .small {
+
+    width: 28px;
+    height: 28px;
+
+}

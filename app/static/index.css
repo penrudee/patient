@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:'Poppins',sans-serif;
+}
+.container{
+    margin-bottom: 20px;
+}
+.person{
+    display: flex;
+}
+.person .add_patient{
+    position: relative;
+    right: 43.5rem;
+    top:5px;
+    
+}
+img.rounded{
+    width: 100px;
+}
+.patient-form .col{
+    padding-top: 5px;
+}
+input, form, textarea{
+    display: block;
+    width: 100%;
+}
+textarea{
+    margin:10px 10px;
+
+}
+textarea::placeholder{
+    
+    font-size: 18px;
+    padding: 10px  0 10px;
+}
+form.col.btn{
+    margin-bottom:10px;
+}
+.add-btn .form-group{
+    display: flex;
+}
+.form-group .btn-add-btn{
+    position: absolute;
+    left: 20vh;
+}
+.form-group .label-col{
+    position: relative;
+    left: 6vh;
+    
+}
+div.row {
+    display: flex;
+}
+div.row .col-btn{
+    position: absolute;
+}
+div.row .col-input{
+    position:relative;
+    left: 8vh;
+    width: 93.8%;
+}
+div.add-btn{
+    margin:10px;
+}
+@media only screen and (max-width: 600px) {
+    .patient-form .col{
+        padding-top: 5px;
+    }
+    .form-group .btn-add-btn{
+        position: absolute;
+        left: 4vh;
+    }
+    div.row .col-btn{
+        position: absolute;
+    }
+    div.row .col-input{
+        position:relative;
+        left: 8vh;
+        width: 85%;
+    }
+    div.patient-his{
+        max-height: 700px;
+    }
+    .patient-his .item-description{
+        
+        position: relative;
+    }
+    .item-description{
+        position: absolute;
+        bottom: 100px;
+        left: 10rem;
+    }
+    .footer-dark{
+        position: relative;
+    }
+}
