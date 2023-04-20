@@ -1,0 +1,63 @@
+<!-- Add Product Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url_for('addproduct')}}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" id="csrf_token" value="{{csrf_token()}}">
+                    <div class="form-group">
+                        <label for="productName">Product Name</label>
+                        <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter product name">
+                    </div>
+                    <div class="form-group">
+                        <label for="productDetail">Product Detail</label>
+                        <textarea class="form-control" id="productDetail" name="productDetail" rows="3" placeholder="Enter product detail"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice">Product Price/Unit</label>
+                        <input type="number" class="form-control" id="productPrice" name="productPrice" placeholder="Enter product price/unit">
+                    </div>
+                    <div class="form-group">
+                        <label for="productUnit">Product Unit</label>
+                        <input type="text" class="form-control" id="productUnit" name="productUnit" placeholder="Enter product price/unit">
+                    </div>
+                    <div class="form-group">
+                        <label for="lineId">Saler Line Id</label>
+                        <input type="text" class="form-control" id="lineId" name="lineId" placeholder="Enter line id">
+                    </div>
+                    <div class="form-group productImage">
+                        <label for="productImage">Product Image</label>
+                        <input type="file" class="form-control-file" id="productImage" name="productImage" onchange="previewImage()">
+                        <br>
+                        <img id="preview" src="#" alt="Preview Image" style="max-height: 200px;">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    function previewImage() {
+        var preview = document.querySelector('#preview');
+        var file = document.querySelector('#productImage').files[0];
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            preview.src = reader.result;
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+</script>

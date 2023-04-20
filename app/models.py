@@ -10,6 +10,8 @@ class Pharmacist(UserMixin,db.Model):
     password_hash = db.Column(db.String(128))
     patients = db.relationship('Patient',backref='doctor',lazy='dynamic')
     paids = db.relationship('Pay',backref='doctor',lazy='dynamic')
+    products = db.relationship("Product",backref='doctor',lazy='dynamic')
+
     def __repr__(self):
         return '<Pharmacist {}'.format(self.username)
     def set_password(self, password):
@@ -30,6 +32,11 @@ class Patient(db.Model):
     pis = db.relationship("Present_illness",backref="patientName",lazy='dynamic')
     meds = db.relationship("Medicine",backref="patientName",lazy='dynamic')
     pharmacist_id = db.Column(db.Integer,db.ForeignKey('pharmacist.id'))
+
+    def as_dict(self):
+        return {"id":self.id,                 
+                 "phone_no":self.phone_no,
+                 }
 
 class Allergy(db.Model):
     id=db.Column(db.Integer,primary_key=True)
@@ -62,6 +69,21 @@ class Pay(db.Model):
     paid_time = db.Column(db.DateTime)
     pharmacist_id = db.Column(db.Integer,db.ForeignKey('pharmacist.id'))
 
+class Product(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    create_time = db.Column(db.DateTime,index=True)
+    img = db.Column(db.String(200))
+    title=db.Column(db.String(200))
+    body=db.Column(db.Text)
+    contact = db.Column(db.String(200))
+    pharmacist_id=db.Column(db.Integer,db.ForeignKey('pharmacist.id'))
+    have_it = db.Column(db.Boolean)
+    line_id = db.Column(db.String(300))
+    price = db.Column(db.String(300))
+    unit = db.Column(db.String(100))
+
+    def as_dict(self):
+        return {"title":self.title}
 
 @login.user_loader
 def load_user(id):

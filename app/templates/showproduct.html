@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block link %}
+<link rel="stylesheet" href="{{url_for('static',filename='showproduct.css')}}">
+<!-- jQuery -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock link %}
+
+{% block content %}
+<div class="container">
+    <form class="form-inline my-2 my-lg-0 " action="{{url_for('searchproduct')}}" method="post">
+        <input type="hidden" name="csrf_token" id="csrf_token" value="{{csrf_token()}}">
+        <input class="form-control mr-sm-2 searchProduct" type="search" placeholder="Search" aria-label="Search" name="searchProduct">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <!-- Button trigger modal -->
+    {% if current_user.is_authenticated %}
+    <button type="button" class="btn btn-primary addProductBtn" data-bs-toggle="modal" data-bs-target="#addProductModal">
+    เพิ่มสินค้าของท่านเข้าสู่ระบบฟรี!
+    </button>
+    {% endif %}
+     {% include '__addProductModal.html' %}
+    <div class="row">
+        {% for product in allproducts %}
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="{{url_for('static',filename='productImage/'+product.img)}}" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.title}}</h5>
+                    <p class="card-text">Detail: {{product.body}}</p>
+                    <p class="card-text">Price: {{product.price}}/{{product.unit}}</p>
+                    <p class="card-text">LineID: {{product.contact}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="https://via.placeholder.com/300x200" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">Product Name</h5>
+                    <p class="card-text">Price: $10/unit</p>
+                    <p class="card-text">Contact: seller@example.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="https://via.placeholder.com/300x200" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">Product Name</h5>
+                    <p class="card-text">Price: $10/unit</p>
+                    <p class="card-text">Contact: seller@example.com</p>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+<script src="{{url_for('static',filename='js/search_product.js')}}"></script>
+{% endblock content %}

@@ -18,7 +18,12 @@
           <li class="nav-item">
             {% if current_user.is_anonymous %}
             <a class="nav-link" href="{{url_for('login')}}">log in</a>
+          </li>
             {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('showproduct')}}">สินค้าทั้งหมด</a>
+          </li>  
+          <li class="nav-item">
             <a class="nav-link" href="{{url_for('logout')}}">log out</a>
             {% endif %}
           </li>

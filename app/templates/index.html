@@ -3,6 +3,11 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="{{url_for('static',filename='index.css')}}">
 <link rel="stylesheet" href="{{url_for('static',filename='history_of_illness.css')}}">
+<!-- jQuery -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 {% endblock link%}
 {% block content %}
 <div class="container">
@@ -20,10 +25,10 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="col">
-                    <label for="telephone">หมายเลขโทรศัพท์</label>
-                    <input type="text" name="telephone">
+                    <label for="telephone-autocomplete">หมายเลขโทรศัพท์</label>
+                    <input type="text" name="telephone-autocomplete" id="telephone-autocomplete">
                 </div>
                 <div class="col">
                     <label for="first_name">ชื่อจริง</label>
@@ -44,7 +49,7 @@
                             <div class="col label-col">
                                 <label for="allergy">ประวัติการแพ้</label>
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -88,15 +93,17 @@
 
 
             </form>
-            
+
         </div>
-        <div data-bs-spy="scroll" class="col-sm-4 patient-his border-start-0 border border-dark rounded overflow-auto custom-scroll-container">
+        <div data-bs-spy="scroll"
+            class="col-sm-4 patient-his border-start-0 border border-dark rounded overflow-auto custom-scroll-container">
             <h3>ประวัติการมารับการรักษา</h3>
             {% include 'history_of_illness.html' %}
-            
+
         </div>
     </div>
     {% include 'addPatient.html' %}
     <script src="{{url_for('static',filename='js/index.js')}}"></script>
+    <script src="{{url_for('static',filename='js/phone_autocomplete.js')}}"></script>
 </div>
 {% endblock content %}

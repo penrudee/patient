@@ -1,11 +1,13 @@
 from app import app
 from app.models import *
-from flask import render_template, redirect, flash, url_for, request
+from flask import render_template, redirect, flash, url_for, request,jsonify
 from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user , logout_user, login_required
 from werkzeug.urls import url_parse
-
+from PIL import Image
+from werkzeug.utils import secure_filename
 import datetime 
+import os 
 
 
 @app.route('/login',methods=['GET','POST'])
@@ -52,6 +54,62 @@ def index():
     return render_template("index.html",
                             title="Home")
 
+@app.route('/showproduct')
+@login_required
+def showproduct():
+    allproducts=Product.query.order_by(Product.id.desc())
+    return render_template("showproduct.html",
+                            title="All Product",
+                            allproducts=allproducts)
+@app.route('/addproduct',methods=['POST'])
+@login_required
+def addproduct():
+    if request.method=='POST':
+        p = Product()
+        p.create_time = datetime.datetime.now()
+        
+        product_image = request.files['productImage']
+        p.title = request.form.get("productName")
+        p.body = request.form.get("productDetail")
+        p.price=request.form.get("productPrice")
+        p.unit = request.form.get("productUnit")
+        p.contact = request.form.get("lineId")
+        p.pharmacist_id=current_user.id 
+        p.have_it = True 
+         # Save image to disk
+        image_name = secure_filename(product_image.filename)
+        image_path = os.path.join(app.root_path, 'static', 'productImage', image_name)
+        product_image.save(image_path)
+        p.img = image_name
+        db.session.add(p)
+        db.session.commit()
+        flash("Add Product","success")
+
+
+
+    return redirect(url_for('showproduct'))
+
+@app.route("/api")
+@login_required
+def api():
+    res = Product.query.order_by(Product.id.desc())
+    list_drug =[r.as_dict() for r in res]
+
+    return list_drug
+@app.route("/searchproduct",methods=['POST'])
+@login_required
+def searchproduct():
+    found = None
+
+    if request.method=='POST':
+        product = request.form.get("searchProduct")
+        search = "%{}%".format(product)
+        found = Product.query.filter(Product.title.like(search)).all()
+           
+    return render_template("showproduct.html",
+                                title="ค้นหาสินค้า",
+                                allproducts=found)  
+
 @app.route('/allpatients')
 @login_required
 def allpatients():
@@ -80,3 +138,10 @@ def addpatient():
         db.session.commit()
         flash("เพิ่มผู้ป่วยใหม่แล้ว!",'success')
     return redirect(url_for('index'))
+
+@app.route("/api_patient")
+@login_required
+def api_patient():
+    patients = Patient.query.filter_by(pharmacist_id=current_user.id)
+    patients_api = [r.as_dict() for r in patients]
+    return patients_api
